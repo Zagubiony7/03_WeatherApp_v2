@@ -1,26 +1,27 @@
 import "./Weather.css";
-import sunny from "../../assets/clear.png";
-import cloud from "../../assets/cloud.png";
-import drizzle from "../../assets/drizzle.png";
-import rain from "../../assets/rain.png";
-import snow from "../../assets/snow.png";
-// import { type WeatherProps } from "../../../data";
-// { weather, temp, locationName }: WeatherProps
-const Weather = ({ main, temp, name }: { main: string; temp: string; name: string }) => {
-  const whatWeather = main.toLowerCase();
-  let whatImage;
-  if (whatWeather.includes("rain")) whatImage = rain;
-  if (whatWeather.includes("cloud")) whatImage = cloud;
-  if (whatWeather.includes("snow")) whatImage = snow;
-  if (whatWeather.includes("sunny")) whatImage = sunny;
-  if (whatWeather.includes("clear")) whatImage = sunny;
-  if (whatWeather.includes("drizzle")) whatImage = drizzle;
+import sunny_icon from "../../assets/clear.png";
+import cloud_icon from "../../assets/cloud.png";
+import drizzle_icon from "../../assets/drizzle.png";
+import rain_icon from "../../assets/rain.png";
+import snow_icon from "../../assets/snow.png";
+import { type WeatherProps } from "../../../data";
+const Weather = ({ icon, temp, name }: WeatherProps) => {
+  const allIcons: Record<string, string> = {
+    "01d": sunny_icon,
+    "02d": cloud_icon,
+    "10d": rain_icon,
+    "09d": drizzle_icon,
+    "13d": snow_icon,
+  };
   return (
     <div className="weather">
-      <img src={whatImage} alt="weather-atmospheric-condition image" />
+      <img
+        src={allIcons[icon] ?? `https://openweathermap.org/img/wn/${icon}@2x.png`}
+        alt="weather-atmospheric-condition image"
+      />
       <div className="weather-celsius-location">
         <p className="celsius-info">
-          {(+temp - 274).toFixed(0)}
+          {(+temp).toFixed(0)}
           <span>°C</span>
         </p>
         <p className="location">{name}</p>

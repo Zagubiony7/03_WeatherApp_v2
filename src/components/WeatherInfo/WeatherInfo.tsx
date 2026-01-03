@@ -14,7 +14,7 @@ const WeatherInfo = ({ humidity, speed }: { humidity: string; speed: string }) =
       <WeatherDetails img={humidity_img} infoStat={humidity + "%"}>
         Humidity
       </WeatherDetails>
-      <WeatherDetails img={wind_speed} infoStat={speed}>
+      <WeatherDetails img={wind_speed} infoStat={speed + " km/h"}>
         Wind Speed
       </WeatherDetails>
     </div>

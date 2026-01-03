@@ -7,9 +7,9 @@ export type SearchBarProps = {
 };
 
 export type WeatherProps = {
-  weather: { id: string; main: string; description: string; icon: string }[];
+  icon: string;
   temp: string;
-  locationName: string;
+  name: string;
 };
 
 export type WeatherInfoProps = {
@@ -24,7 +24,7 @@ export type WeatherDetailsProps = {
 };
 
 export type WEATHERINFORMATIONS = {
-  main: string;
+  icon: string;
   temp: string;
   name: string;
   humidity: string;

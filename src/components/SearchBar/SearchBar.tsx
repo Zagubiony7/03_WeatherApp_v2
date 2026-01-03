@@ -12,16 +12,17 @@ const SearchBar = ({ checkLocation, setCheckLocation, setApiData }: SearchBarPro
     const getInfoAboutLocation = async (location: string) => {
       try {
         const res = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${import.meta.env.VITE_APP_ID}`
+          `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${
+            import.meta.env.VITE_APP_ID
+          }&units=metric&lang=pl`
         );
-
         const {
           main: { temp, humidity },
           name,
           wind: { speed },
-          weather: [{ main }],
+          weather: [{ icon }],
         } = res.data;
-        setApiData({ temp, humidity, name, speed, main });
+        setApiData({ temp, humidity, name, speed, icon });
       } catch (err) {
         console.log(err);
         alert("Wrong Location");
