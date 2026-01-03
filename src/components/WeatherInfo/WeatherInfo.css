@@ -10,24 +10,3 @@
   width: 2.5rem;
   height: 2.5rem;
 }
-
-.info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.weather-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.info-stat {
-  font-size: 2rem;
-  letter-spacing: 1.2px;
-}
-
-.info-name {
-  font-size: 1.6rem;
-}

@@ -3,25 +3,22 @@ import "./WeatherInfo.css";
 import humidity from "../../assets/humidity.png";
 import wind_speed from "../../assets/wind.png";
 
-const WeatherInfo = () => {
+import type { WeatherInfoProps } from "../../../data";
+import WeatherDetails from "../WeatherDetails/WeatherDetails";
+
+const WeatherInfo = ({ humidityPercent, windSpeed }: WeatherInfoProps) => {
   return (
     <div className="weather-info">
-      <div className="info">
-        <img src={humidity} alt="humidity image" />
-        <div className="weather-stat">
-          <p className="info-stat">67 %</p>
-          <p className="info-name">Humidity</p>
-        </div>
-      </div>
-      <div className="info">
-        <img src={wind_speed} alt="humidity image" />
-        <div className="weather-stat">
-          <p className="info-stat">2.06 km/h</p>
-          <p className="info-name">Humidity</p>
-        </div>
-      </div>
+      <WeatherDetails img={humidity} infoStat={humidityPercent}>
+        Humidity
+      </WeatherDetails>
+      <WeatherDetails img={wind_speed} infoStat={windSpeed}>
+        Wind Speed
+      </WeatherDetails>
     </div>
   );
 };
 
 export default WeatherInfo;
+
+// Fix data structure and add WeatherDetails component
