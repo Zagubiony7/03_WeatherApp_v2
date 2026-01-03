@@ -4,14 +4,13 @@ import Weather from "./components/Weather/Weather";
 import WeatherInfo from "./components/WeatherInfo/WeatherInfo";
 
 const App = () => {
-  const [checkLocation, setCheckLocation] = useState("");
-
-  console.log(checkLocation);
+  const [checkLocation, setCheckLocation] = useState("New York");
+  const [apiData, setApiData] = useState({ main: "", temp: "", name: "", humidity: "", speed: "" });
   return (
     <div className="container">
-      <SearchBar checkLocation={checkLocation} setCheckLocation={setCheckLocation} />
-      <Weather />
-      <WeatherInfo />
+      <SearchBar checkLocation={checkLocation} setCheckLocation={setCheckLocation} setApiData={setApiData} />
+      {apiData.name && <Weather main={apiData.main} temp={apiData.temp} name={apiData.name} />}
+      {apiData.name && <WeatherInfo humidity={apiData.humidity} speed={apiData.speed} />}
     </div>
   );
 };

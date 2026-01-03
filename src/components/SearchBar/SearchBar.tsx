@@ -3,8 +3,9 @@ import search from "../../assets/search.png";
 import { useState } from "react";
 import { type SearchBarProps } from "../../../data";
 import { useEffect } from "react";
+import axios from "axios";
 
-const SearchBar = ({ checkLocation, setCheckLocation }: SearchBarProps) => {
+const SearchBar = ({ checkLocation, setCheckLocation, setApiData }: SearchBarProps) => {
   const [location, setLocation] = useState("");
 
   useEffect(() => {
@@ -13,11 +14,19 @@ const SearchBar = ({ checkLocation, setCheckLocation }: SearchBarProps) => {
         const res = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=323447a29a6341d2f7b750b15aef2342`
         );
+
         const data = await res.json();
         if (data.cod === "404") {
           alert("Wrong Location");
           setLocation("");
         }
+        const {
+          main: { temp, humidity },
+          name,
+          wind: { speed },
+          weather: [{ main }],
+        } = data;
+        setApiData({ temp, humidity, name, speed, main });
         return data;
       } catch (err) {
         console.log(err);
