@@ -11,28 +11,24 @@ const SearchBar = ({ checkLocation, setCheckLocation, setApiData }: SearchBarPro
   useEffect(() => {
     const getInfoAboutLocation = async (location: string) => {
       try {
-        const res = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=323447a29a6341d2f7b750b15aef2342`
+        const res = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${import.meta.env.VITE_APP_ID}`
         );
 
-        const data = await res.json();
-        if (data.cod === "404") {
-          alert("Wrong Location");
-          setLocation("");
-        }
         const {
           main: { temp, humidity },
           name,
           wind: { speed },
           weather: [{ main }],
-        } = data;
+        } = res.data;
         setApiData({ temp, humidity, name, speed, main });
-        return data;
       } catch (err) {
         console.log(err);
+        alert("Wrong Location");
+        setLocation("");
       }
     };
-    if (checkLocation) getInfoAboutLocation(checkLocation);
+    getInfoAboutLocation(checkLocation);
   }, [checkLocation]);
 
   const handleCheckLocation = (e: React.ChangeEvent<HTMLFormElement>) => {
