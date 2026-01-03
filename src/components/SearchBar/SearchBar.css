@@ -1,0 +1,28 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.search-bar input,
+button {
+  outline: none;
+  border: none;
+  border-radius: 3rem;
+}
+
+.search-bar input {
+  padding: 2rem;
+  font-size: 1.8rem;
+  color: #3b3838;
+}
+
+.search-bar input::placeholder {
+  color: #8a8787;
+  font-size: 1.8rem;
+}
+
+.search-bar button {
+  padding: 1.5rem 2rem;
+}
