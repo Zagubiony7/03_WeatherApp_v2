@@ -1,4 +1,5 @@
 export type SearchBarProps = {
+  checkLocation: string;
   setCheckLocation: (arg: string) => void;
 };
 

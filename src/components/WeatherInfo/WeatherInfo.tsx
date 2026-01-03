@@ -3,16 +3,18 @@ import "./WeatherInfo.css";
 import humidity from "../../assets/humidity.png";
 import wind_speed from "../../assets/wind.png";
 
-import type { WeatherInfoProps } from "../../../data";
+// import type { WeatherInfoProps } from "../../../data";
+// { humidityPercent, windSpeed }: WeatherInfoProps
+
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
 
-const WeatherInfo = ({ humidityPercent, windSpeed }: WeatherInfoProps) => {
+const WeatherInfo = () => {
   return (
     <div className="weather-info">
-      <WeatherDetails img={humidity} infoStat={humidityPercent}>
+      <WeatherDetails img={humidity} infoStat={50 + "%"}>
         Humidity
       </WeatherDetails>
-      <WeatherDetails img={wind_speed} infoStat={windSpeed}>
+      <WeatherDetails img={wind_speed} infoStat={"2.06km/h"}>
         Wind Speed
       </WeatherDetails>
     </div>
